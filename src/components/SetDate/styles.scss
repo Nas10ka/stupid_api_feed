@@ -1,0 +1,24 @@
+@import '../../theme/palette';
+@import "../../theme/animations";
+* {
+    box-sizing: border-box;
+}
+.datepicker {
+    list-style: none;
+    width: 425px;
+    flex-flow: column nowrap;
+    p {
+       font-size: 16px;
+       font-weight: bold;
+       color: $paletteColor1;
+       text-decoration: none;
+    }
+    span {
+        width: 100%;
+        margin-bottom: 15px;
+        height: 250px;
+        overflow: hidden;
+        display: flow-root;
+    }
+
+}

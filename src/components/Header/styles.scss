@@ -1,0 +1,16 @@
+@import '../../theme/palette';
+@import "../../theme/animations";
+* {
+    box-sizing: border-box;
+}
+.header {
+    list-style: none;
+    width: 100%;
+    flex-flow: column nowrap;
+    padding: 10px;
+    height: 50px;
+    background: $paletteColor6;
+    color: white;
+    font-weight: bold;
+
+}

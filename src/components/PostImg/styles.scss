@@ -1,0 +1,12 @@
+@import '../../theme/palette';
+@import "../../theme/animations";
+* {
+    box-sizing: border-box;
+}
+.img {
+   width: 100%;
+   display: block;
+   object-fit: cover;
+   height: 100%;
+
+}
