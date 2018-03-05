@@ -1,11 +1,17 @@
-//Core 
-import { combineReducers } from 'redux';
+import types from '../../actions/posts/types';
+import { Map } from 'immutable';
 
-//Instruments 
-import entities from './entities';
-import result from './result';
+const initialState = Map({});
 
-export default combineReducers({
-    entities,
-    result
-});
+export default (state = initialState, action) => {
+    switch (action.type) {
+        case types.FETCH_POSTS_SUCCEED: {
+            return action.payload;
+        }
+        case types.UPDATE_POSTS_SUCCEED : {
+            return action.payload;
+        }
+        default: 
+            return state;
+    }
+}

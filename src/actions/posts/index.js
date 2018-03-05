@@ -14,5 +14,22 @@ export default Object.freeze({
         payload: error,
         error: true
     }),
+    updatePosts: (date) => ({
+        type: types.UPDATE_POSTS,
+        payload: date
+    }),
+    updatePostsSucceed: (posts) => ({
+        type: types.UPDATE_POSTS_SUCCEED,
+        payload: posts
+    }),
+    updatePostsFailed: (error) => ({
+        type: types.update_POSTS_FAILED,
+        payload: error,
+        error: true
+    }),
+    getKeys: (postKeys) => ({
+        type: types.GET_KEYS,
+        payload: postKeys
+    }) 
 
 });
