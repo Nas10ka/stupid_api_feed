@@ -12,12 +12,12 @@ import Styles from './styles';
 
 
 export default class Post extends Component {
-    constructor() {
-        super();
-
-    }
+    constructor(props) {
+        super()
+    };
 
     render() {
+        console.log('post props',this.props);
         const {web_url, snippet, lead_paragraph,
             abstract, print_page, blog, source,
             multimedia, headline, keywords, pub_date,
@@ -25,6 +25,8 @@ export default class Post extends Component {
             subsection_name, byline, type_of_material,
             _id, word_count, slideshow_credits
         } = this.props;
+        const postKeys = this.props.objKeys;
+        console.log('postKeys', postKeys);
 
         const post_link = `/${_id}`;
         const img = multimedia.map((props) => {

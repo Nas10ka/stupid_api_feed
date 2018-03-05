@@ -1,13 +1,8 @@
 //Core
 import { createSelector } from 'reselect';
 
+const getPosts = (state) => state.posts;
 
-const postsSelector = state => state.posts;
-
-export const postKeys = createSelector(
-    postsSelector,
-    (posts) => {
-        return Object.keys(postsSelector);
-    }
-
-)
+export const postsSelector = createSelector(
+    getPosts
+);
