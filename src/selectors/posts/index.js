@@ -1,8 +1,12 @@
-//Core
+// Core
 import { createSelector } from 'reselect';
 
-const getPosts = (state) => state.posts;
+const getPostsIdsFromState = (state) => state.posts.result;
+const getPostsMapFromState = (state) => state.posts.entities;
 
-export const postsSelector = createSelector(
-    getPosts
+const getPostShape = createSelector(
+    getPostsIdsFromState,
+    getPostsMapFromState,
+    (postsIds, postsMap) => postsIds.map((id) => postsMap.get(id)).toJS()
 );
+export default getPostShape;

@@ -1,9 +1,11 @@
 //Core 
 import { call, put } from 'redux-saga/effects';
+import { normalize } from 'normalizr';
 
 //Instrument 
 import uiActions from '../../../../actions/ui';
 import postActions from '../../../../actions/posts';
+import postsSchema from '../../../../schemas/posts';
 
 export function* fetchPostsWorker () {
     try {
@@ -13,10 +15,18 @@ export function* fetchPostsWorker () {
         });
         const data = yield call([response, 'json']);
 
-        const posts = data.response.docs;
+        const denormalizedPosts = data.response.docs;
+        let firstTenPosts = [];
+        for (let i=0; i<100; i++) {
+            firstTenPosts.push(denormalizedPosts[i]);
+        }
 
-        const objectKeys = Object.keys(posts[0]);
-        console.log('objectKeys',objectKeys);
+        const objectKeys = Object.keys(denormalizedPosts[0]);
+
+        const posts = normalize(firstTenPosts, postsSchema );
+
+        console.log('fetch saga posts',posts);
+        console.log('denormalized posts', denormalizedPosts)
 
     
         if(response.status !== 200) {
