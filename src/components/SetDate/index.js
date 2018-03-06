@@ -30,6 +30,8 @@ export default class SetDate extends Component {
     setDate() {
         const month = selectMonth.value;
         const year = selectYear.value;
+        const date = { month, year };
+        this.props.setNewDate(date);
     }
 
     render () {

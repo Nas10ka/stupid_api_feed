@@ -8,5 +8,6 @@ export function* saga() {
     yield all ([
         // эффект all принимает массив с вотчерами
         posts.fetchPostsWatcher(),
+        posts.updatePostsWatcher(),
     ])
 }

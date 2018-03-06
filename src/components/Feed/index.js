@@ -40,18 +40,14 @@ import getPostShape from '../../selectors/posts';
         let post;
         if (tenPosts) {
             post = tenPosts.map((props) => {
-                console.log(props, keys);
                 return ( 
                     <Post  objKeys = { keys }  key = { v4() } { ...props }/>
                 )
             });
-
-            // console.log('tenPosts', posts[1]);
-            // console.log('Boolean(posts)',posts.length);
         }
         return (
             <div >
-                <Button raised color="primary" onClick={ this.getPrevPost }>Get Previous Posts</Button>
+                <Button color="primary" onClick={ this.getPrevPost }>Get Previous Posts</Button>
                 {
                     Boolean(posts.length) && Boolean(tenPosts) ?
                         <ul>{post}</ul>
@@ -59,7 +55,7 @@ import getPostShape from '../../selectors/posts';
                     <b>Посты еще не подгрузились</b>
                 }
                     
-                <Button raised color="primary" onClick={ this.getPostsClick }>Get Next Posts</Button>
+                <Button color="primary" onClick={ this.getPostsClick }>Get Next Posts</Button>
              
             </div>  
             )
@@ -68,14 +64,7 @@ import getPostShape from '../../selectors/posts';
 
 }
 
-// const mapStateToProps = (state) => ({
-//     posts: state.posts,
-//     keys: state.keys
-// });
-
-
 const mapStateToProps = (state) => {
-    console.log('getPostShape(state)', getPostShape(state));
     return {
         posts: getPostShape(state),
         keys: state.keys

@@ -6,7 +6,6 @@ const initialState = List([]);
 export default (state = initialState, action) => {
     switch (action.type) {
         case types.FETCH_POSTS_SUCCEED: {
-            console.log(fromJS(action.payload.result));
             return fromJS(action.payload.result);
         }
         case types.UPDATE_POSTS_SUCCEED : {

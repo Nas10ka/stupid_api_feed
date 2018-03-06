@@ -24,16 +24,13 @@ export function* fetchPostsWorker () {
         const objectKeys = Object.keys(denormalizedPosts[0]);
 
         const posts = normalize(firstTenPosts, postsSchema );
-
-        console.log('fetch saga posts',posts);
-        console.log('denormalized posts', denormalizedPosts)
-
     
         if(response.status !== 200) {
             throw new Error('Error! Response status is not 200!');
         }
         yield put(postActions.getKeys(objectKeys));
         yield put(postActions.fetchPostsSucceed(posts));
+        
     } catch (error) {
         yield put(postActions.fetchPostsFailed(error.message));
         debugger;

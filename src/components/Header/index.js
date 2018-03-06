@@ -1,17 +1,45 @@
+//Core
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+//Instruments
+import SetDate from '../SetDate';
 import Styles from './styles';
-// import SetDate from '../SetDate';
-import SetDateContainer from '../SetDate'
+import updatePosts from '../../actions/posts';
+import setDate from '../../actions/date';
 
 
-export default class Header extends Component {
+class Header extends Component {
+    constructor() {
+        super();
+        this.setNewDate = this._setNewDate.bind(this);
+    }
+    componentDidMount () {
+        console.log(this.props);
+    }
+
+    _setNewDate = (date) => {
+        this.props.action.setDate(date);
+        this.props.action.updatePosts(date);
+    }; 
 
     render () {
-    
         return (
             <div className= { Styles.header }>
-                <SetDateContainer />
+                <SetDate setNewDate = {this.setNewDate} />
             </div>
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        date: state.date
+    }
+};
+
+const mapDispatchToProps = (dispatch) =>({
+    action: bindActionCreators({ updatePosts, setDate }, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

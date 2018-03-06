@@ -1,9 +1,11 @@
 //Core 
 import { call, put } from 'redux-saga/effects';
+import { normalize } from 'normalizr';
 
 //Instrument 
 import uiActions from '../../../../actions/ui';
 import postActions from '../../../../actions/posts';
+import postsSchema from '../../../../schemas/posts';
 
 export function* updatePostsWorker ({payload: date}) {
     try {
@@ -14,13 +16,19 @@ export function* updatePostsWorker ({payload: date}) {
         });
         const data = yield call([response, 'json']);
 
-        const posts = data.response.docs;
+        const denormalizedPosts = data.response.docs;
+        let firstTenPosts = [];
+        for (let i=0; i<100; i++) {
+            firstTenPosts.push(denormalizedPosts[i]);
+        }
+
+        const posts = normalize(firstTenPosts, postsSchema );
     
         if(response.status !== 200) {
             throw new Error('Error! Response status is not 200!');
         }
-
         yield put(postActions.updatePostsSucceed(posts));
+        
     } catch (error) {
         yield put(postActions.updatePostsFailed(error.message));
         debugger;

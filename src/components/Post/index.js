@@ -17,7 +17,7 @@ export default class Post extends Component {
     };
 
     render() {
-        console.log('post props',this.props);
+        // console.log('post props',this.props);
         const {web_url, snippet, lead_paragraph,
             abstract, print_page, blog, source,
             multimedia, headline, keywords, pub_date,
@@ -26,7 +26,7 @@ export default class Post extends Component {
             _id, word_count, slideshow_credits
         } = this.props;
         const postKeys = this.props.objKeys;
-        console.log('postKeys', postKeys);
+        // console.log('postKeys', postKeys);
 
         const post_link = `/${_id}`;
         const img = multimedia.map((props) => {
