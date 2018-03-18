@@ -11,6 +11,6 @@ export default Object.freeze({
         yield takeEvery(types.FETCH_POSTS, fetchPostsWorker);
     },
     * updatePostsWatcher () {
-        yield takeEvery(types.FETCH_POSTS, updatePostsWorker);
+        yield takeEvery(types.UPDATE_POSTS, updatePostsWorker);
     },
 })

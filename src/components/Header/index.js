@@ -33,13 +33,18 @@ class Header extends Component {
     }
 }
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         date: state.date
     }
 };
 
-const mapDispatchToProps = (dispatch) =>({
-    action: bindActionCreators({ updatePosts, setDate }, dispatch),
-});
+const mapDispatchToProps = (dispatch) =>{
+    console.log(dispatch);
+    return {  
+        action: bindActionCreators({ ...updatePosts, ...setDate }, dispatch),
+    }
+  
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
